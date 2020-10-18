@@ -1,0 +1,1 @@
+# Home-Assistant-Ikea-E1524-Pro
