@@ -1,0 +1,476 @@
+- id: '1602399119785'
+  alias: Zwiększ input pilot salon o 1
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: arrow_right_click
+    discovery_id: 0x680ae2fffe8404a5 action_arrow_right_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    below: '4'
+  action:
+  - service: input_number.increment
+    data: {}
+    entity_id: input_number.pilot_salon
+  mode: single
+- id: '1602399259257'
+  alias: Przeskocz input salon
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: arrow_right_click
+    discovery_id: 0x680ae2fffe8404a5 action_arrow_right_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '3'
+  action:
+  - service: input_number.set_value
+    data:
+      value: 0
+    entity_id: input_number.pilot_salon
+  mode: single
+- id: '1602399910956'
+  alias: Zmniejsz input pilot salon
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: arrow_left_click
+    discovery_id: 0x680ae2fffe8404a5 action_arrow_left_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '0'
+  action:
+  - service: input_number.decrement
+    data: {}
+    entity_id: input_number.pilot_salon
+  mode: single
+- id: '1602399989189'
+  alias: Przeskocz input salon w lewo
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: arrow_left_click
+    discovery_id: 0x680ae2fffe8404a5 action_arrow_left_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    below: '1'
+  action:
+  - service: input_number.set_value
+    data:
+      value: 4
+    entity_id: input_number.pilot_salon
+  mode: single
+- id: '1602400315393'
+  alias: Pilot salon powiedz światło salon
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '-1'
+    below: '1'
+  condition: []
+  action:
+  - service: tts.aaa_google_cloud_say
+    data:
+      entity_id: media_player.salon_glosnik
+      message: Światło salon
+  mode: single
+- id: '1602400315394'
+  alias: Pilot salon powiedz światło nad tv
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '0'
+    below: '2'
+  condition: []
+  action:
+  - service: tts.aaa_google_cloud_say
+    data:
+      entity_id: media_player.salon_glosnik
+      message: Światło nad TV
+  mode: single
+- id: '1602400315396'
+  alias: Pilot salon powiedz roleta taras
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '1'
+    below: '3'
+  condition: []
+  action:
+  - service: tts.aaa_google_cloud_say
+    data:
+      entity_id: media_player.salon_glosnik
+      message: Roleta taras
+  mode: single
+- id: '1602400315397'
+  alias: Pilot salon powiedz roleta wykusz
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '2'
+    below: '4'
+  condition: []
+  action:
+  - service: tts.aaa_google_cloud_say
+    data:
+      entity_id: media_player.salon_glosnik
+      message: Roleta wykusz
+  mode: single
+- id: '1602400315398'
+  alias: Pilot salon powiedz wszystkie rolety
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '3'
+    below: '5'
+  condition: []
+  action:
+  - service: tts.aaa_google_cloud_say
+    data:
+      entity_id: media_player.salon_glosnik
+      message: Wszystkie rolety
+  mode: single
+- id: '1602400814880'
+  alias: Przełącz światło w salonie
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: toggle
+    discovery_id: 0x680ae2fffe8404a5 action_toggle
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '-1'
+    below: '1'
+  action:
+  - service: light.toggle
+    data: {}
+    entity_id: light.salon
+  mode: single
+- id: '1602400913256'
+  alias: Zwiększ jasność w salonie
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: brightness_up_click
+    discovery_id: 0x680ae2fffe8404a5 action_brightness_up_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '-1'
+    below: '1'
+  action:
+  - type: brightness_increase
+    device_id: 4f56ddc59b2144519ec3b76ffb0359eb
+    entity_id: light.salon
+    domain: light
+  mode: single
+- id: '1602400973576'
+  alias: Pilot zmniejsz jasność w salonie
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: brightness_down_click
+    discovery_id: 0x680ae2fffe8404a5 action_brightness_down_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '-1'
+    below: '1'
+  action:
+  - type: brightness_decrease
+    device_id: 4f56ddc59b2144519ec3b76ffb0359eb
+    entity_id: light.salon
+    domain: light
+  mode: single
+- id: '1602401222647'
+  alias: Przełącz światło nad TV
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: toggle
+    discovery_id: 0x680ae2fffe8404a5 action_toggle
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '0'
+    below: '2'
+  action:
+  - type: toggle
+    device_id: a353b5a53e7d459694042dfe35e456a5
+    entity_id: light.0xec1bbdfffeaf9274_light
+    domain: light
+  - type: toggle
+    device_id: e6deec151d36433797ead73c35cf5a54
+    entity_id: light.0x680ae2fffe3696a1_light
+    domain: light
+  mode: single
+- id: '1602401327506'
+  alias: Zwiększ jasność nadtv
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: brightness_up_click
+    discovery_id: 0x680ae2fffe8404a5 action_brightness_up_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '0'
+    below: '2'
+  action:
+  - type: brightness_increase
+    device_id: a353b5a53e7d459694042dfe35e456a5
+    entity_id: light.0xec1bbdfffeaf9274_light
+    domain: light
+  - type: brightness_increase
+    device_id: e6deec151d36433797ead73c35cf5a54
+    entity_id: light.0x680ae2fffe3696a1_light
+    domain: light
+  mode: single
+- id: '1602401393844'
+  alias: Zmniejsz jasność nadtv
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: brightness_down_click
+    discovery_id: 0x680ae2fffe8404a5 action_brightness_down_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '0'
+    below: '2'
+  action:
+  - type: brightness_decrease
+    device_id: a353b5a53e7d459694042dfe35e456a5
+    entity_id: light.0xec1bbdfffeaf9274_light
+    domain: light
+  - type: brightness_decrease
+    device_id: e6deec151d36433797ead73c35cf5a54
+    entity_id: light.0x680ae2fffe3696a1_light
+    domain: light
+  mode: single
+- id: '1602401528510'
+  alias: Zamknij roletę taras pilotem
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: brightness_down_click
+    discovery_id: 0x680ae2fffe8404a5 action_brightness_down_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '1'
+    below: '3'
+  action:
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.my_shutterbox_shutterbox_position
+  mode: single
+- id: '1602401583806'
+  alias: Zatrzymaj roletę w salonie
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: toggle
+    discovery_id: 0x680ae2fffe8404a5 action_toggle
+  condition: []
+  action:
+  - service: cover.stop_cover
+    data: {}
+    entity_id: cover.my_shutterbox_shutterbox_position
+  mode: single
+- id: '1602401694736'
+  alias: Otwórz roletę taras pilotem
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: brightness_up_click
+    discovery_id: 0x680ae2fffe8404a5 action_brightness_up_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '1'
+    below: '3'
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.my_shutterbox_shutterbox_position
+  mode: single
+- id: '1602401794244'
+  alias: Zamknij roletę wykusz pilotem
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: brightness_down_click
+    discovery_id: 0x680ae2fffe8404a5 action_brightness_down_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '2'
+    below: '4'
+  action:
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.wykusz_shutterbox_position
+  mode: single
+- id: '1602402090070'
+  alias: Zatrzymaj roletę wykusz
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: toggle
+    discovery_id: 0x680ae2fffe8404a5 action_toggle
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '2'
+    below: '4'
+  action:
+  - service: cover.stop_cover
+    data: {}
+    entity_id: cover.wykusz_shutterbox_position
+  mode: single
+- id: '1602402184073'
+  alias: Otworz rolete wykusz
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: brightness_up_click
+    discovery_id: 0x680ae2fffe8404a5 action_brightness_up_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '2'
+    below: '4'
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.wykusz_shutterbox_position
+  mode: single
+- id: '1602402357803'
+  alias: Otwórz wszystkie rolety
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: brightness_up_click
+    discovery_id: 0x680ae2fffe8404a5 action_brightness_up_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '3'
+    below: '5'
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.lazienka
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.maks
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.my_shutterbox_shutterbox_position
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.papugi
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.sypialnia_shutterbox_position
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.wykusz_shutterbox_position
+  mode: single
+- id: '1602402357804'
+  alias: Zamknij wszystkie rolety
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 74a8c837374c4d1ba52dbc1f55820a56
+    type: action
+    subtype: brightness_down_click
+    discovery_id: 0x680ae2fffe8404a5 action_brightness_down_click
+  condition:
+  - condition: numeric_state
+    entity_id: input_number.pilot_salon
+    above: '3'
+    below: '5'
+  action:
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.lazienka
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.maks
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.my_shutterbox_shutterbox_position
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.papugi
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.sypialnia_shutterbox_position
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.wykusz_shutterbox_position
+  mode: single
